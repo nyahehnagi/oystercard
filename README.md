@@ -1,6 +1,6 @@
 # Oystercard
 
-Program to emaulate the Oystercard system at TFL. 
+Program to emulate the Oystercard system at TFL. 
 
 The purpose of this program is to improve on our TDD, OO design, pair programming, and code qwuality skills
 
