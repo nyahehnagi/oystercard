@@ -1,0 +1,20 @@
+Noun()                                  Message (Verbs)                  attribute            rules
+
+Customer                                add_money
+                                        journey
+
+
+Card                                    add_money                         money
+                                        reduce_money                                                     money_limit
+
+
+                                                                                        
+Money
+
+
+
+Journey
+
+
+Fare
+
