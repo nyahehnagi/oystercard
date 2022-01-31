@@ -1,6 +1,6 @@
-require_relative '../lib/card'
+require_relative '../lib/oystercard'
 
-describe Card do
+describe OysterCard do
   
   subject(:card) { described_class.new() }
 
