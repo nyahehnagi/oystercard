@@ -48,4 +48,28 @@ describe OysterCard do
     end
 
   end
+
+  describe '#in_journey?' do
+    it { is_expected.to respond_to(:in_journey?) }
+  end
+
+  describe '#touch_in' do
+    it { is_expected.to respond_to(:touch_in) }
+
+    it "should start a journey" do
+      oyster_card.touch_in
+      expect(oyster_card).to be_in_journey
+    end
+  end
+
+  describe '#touch_out' do
+    it { is_expected.to respond_to(:touch_out) }
+
+    it "should end a journey" do
+      oyster_card.touch_in
+      oyster_card.touch_out
+      expect(oyster_card).to_not be_in_journey
+    end
+  end
+  
 end
