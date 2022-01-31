@@ -15,7 +15,15 @@
           1,
           1,
           1,
-          1
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null
         ]
       },
       "/home/bromley/Projects/oystercard/lib/oystercard.rb": {
@@ -24,15 +32,24 @@
           null,
           null,
           1,
+          null,
+          1,
           1,
           1,
           null,
           1,
-          8,
+          10,
           null,
           null,
           1,
+          6,
           4,
+          null,
+          null,
+          1,
+          null,
+          1,
+          6,
           null,
           null
         ]
@@ -44,7 +61,7 @@
           1,
           null,
           1,
-          5,
+          6,
           null,
           1,
           2,
@@ -74,6 +91,10 @@
           1,
           1,
           4,
+          null,
+          null,
+          1,
+          2,
           null,
           null,
           null,
@@ -81,6 +102,6 @@
         ]
       }
     },
-    "timestamp": 1643642852
+    "timestamp": 1643644422
   }
 }

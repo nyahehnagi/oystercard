@@ -35,5 +35,9 @@ describe OysterCard do
       expect{ oyster_card.top_up (1) }.to change{ oyster_card.balance }.by 1
     end
 
+    it "should raise an error when balance limit is exceeded on top_up" do
+        expect { oyster_card.top_up(described_class::BALANCE_LIMIT + 1) }.to raise_error "Cannot exceed a balance of £#{described_class::BALANCE_LIMIT}"
+    end
+
   end
 end
