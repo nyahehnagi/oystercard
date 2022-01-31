@@ -27,14 +27,12 @@ describe OysterCard do
     it { is_expected.to respond_to(:top_up).with(1).argument }
 
     it 'should add money to the balance of the card' do
-      oyster_card.top_up(1)
-      expect(oyster_card.balance).to eq 1
+      expect{ oyster_card.top_up (1) }.to change{ oyster_card.balance }.by 1
     end
 
     it 'should add money to the balance of the card when not using default balance' do
       oyster_card = described_class.new(initialise_balance)
-      oyster_card.top_up(1)
-      expect(oyster_card.balance).to eq 2
+      expect{ oyster_card.top_up (1) }.to change{ oyster_card.balance }.by 1
     end
 
   end
