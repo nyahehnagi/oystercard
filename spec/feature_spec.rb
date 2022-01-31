@@ -19,3 +19,9 @@ p "top up card: #{card_one.top_up(91)}"
 rescue => exception
   puts "Error Message: #{exception.message}"
 end
+
+p "testing deduct"
+p "new card, balance of 1:  #{card = OysterCard.new(1)}"
+p "balance = 1:  #{card.balance}"
+p "deduct 1 from card: #{card.deduct_fare(1)}"
+p "balance = 0:  #{card.balance}"

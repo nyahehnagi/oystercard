@@ -4,9 +4,9 @@ require_relative '../lib/oystercard'
 
 describe OysterCard do
   subject(:oyster_card) { described_class.new }
+  let(:initialise_balance) { 1 }
 
   describe '#balance' do
-    let(:initialise_balance) { 1 }
 
     it { is_expected.to respond_to(:balance) }
 
@@ -22,8 +22,6 @@ describe OysterCard do
 
   describe '#top_up' do
 
-    let(:initialise_balance) { 1 }
-    
     it { is_expected.to respond_to(:top_up).with(1).argument }
 
     it 'should add money to the balance of the card' do
@@ -37,6 +35,16 @@ describe OysterCard do
 
     it "should raise an error when balance limit is exceeded on top_up" do
         expect { oyster_card.top_up(described_class::BALANCE_LIMIT + 1) }.to raise_error "Cannot exceed a balance of £#{described_class::BALANCE_LIMIT}"
+    end
+
+  end
+
+  describe "#deduct_fare" do
+    it { is_expected.to respond_to(:deduct_fare).with(1).argument }
+
+    it "should deduct the amount from the card balance" do
+      oyster_card = described_class.new(initialise_balance)
+      expect { oyster_card.deduct_fare(1) }.to change{ oyster_card.balance }.by -1
     end
 
   end
