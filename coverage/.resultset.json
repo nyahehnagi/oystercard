@@ -1,0 +1,88 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/home/bromley/Projects/oystercard/spec/feature_spec.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "/home/bromley/Projects/oystercard/lib/oystercard.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          8,
+          null,
+          null,
+          1,
+          4,
+          null,
+          null
+        ]
+      },
+      "/home/bromley/Projects/oystercard/spec/oystercard_spec.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          5,
+          null,
+          1,
+          2,
+          null,
+          2,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          null,
+          2,
+          null,
+          2,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
+    },
+    "timestamp": 1643642046
+  }
+}
