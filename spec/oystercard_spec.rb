@@ -5,6 +5,7 @@ require_relative '../lib/oystercard'
 describe OysterCard do
   subject(:oyster_card) { described_class.new }
   let(:initial_balance) { 1 }
+  let(:station) { double(:station, :name => "Holborn") }
 
   describe 'initialisation' do
 
@@ -39,16 +40,22 @@ describe OysterCard do
   end
 
   describe '#touch_in' do
-    it { is_expected.to respond_to(:touch_in) }
+    it { is_expected.to respond_to(:touch_in).with(1).argument }
 
     it "should start a journey" do
       oyster_card = described_class.new(initial_balance)
-      oyster_card.touch_in
+      oyster_card.touch_in(station)
       expect(oyster_card).to be_in_journey
     end
 
     it "raises error with insufficient funds" do
-      expect{oyster_card.touch_in}.to raise_error "Insufficient funds on card"
+      expect{oyster_card.touch_in(station)}.to raise_error "Insufficient funds on card"
+    end
+
+    it "should store the entry station" do
+      oyster_card = described_class.new(initial_balance)
+      oyster_card.touch_in(station)
+      expect(oyster_card.entry_station.name).to eq station.name
     end
   end
 
@@ -57,15 +64,22 @@ describe OysterCard do
 
     it "should end a journey" do
       oyster_card = described_class.new(initial_balance)
-      oyster_card.touch_in
+      oyster_card.touch_in(station)
       oyster_card.touch_out
       expect(oyster_card).to_not be_in_journey
     end
 
     it "should change the value of the balance" do
       oyster_card = described_class.new(initial_balance)
-      oyster_card.touch_in
+      oyster_card.touch_in(station)
       expect{ oyster_card.touch_out }.to change{ oyster_card.balance }.by -described_class::MINIMUM_FARE
+    end
+    
+    it "should clear the entry_station" do
+      oyster_card = described_class.new(initial_balance)
+      oyster_card.touch_in(station)
+      oyster_card.touch_out
+      expect( oyster_card.entry_station ).to be_nil
     end
   end
   
