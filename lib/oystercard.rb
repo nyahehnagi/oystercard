@@ -6,6 +6,7 @@ class OysterCard
   DEFAULT_BALANCE = 0
   BALANCE_LIMIT = 90
   MINIMUM_BALANCE = 1
+  MINIMUM_FARE = 1
 
   attr_reader :balance
 
@@ -19,10 +20,6 @@ class OysterCard
     @balance += amount
   end
 
-  def deduct_fare(fare)
-    @balance -= fare
-  end
-
   def in_journey?
     @in_journey
   end
@@ -33,10 +30,14 @@ class OysterCard
   end
 
   def touch_out
+    deduct_fare(MINIMUM_FARE)
     @in_journey = false
   end
   
   private
+  def deduct_fare(fare)
+    @balance -= fare
+  end
 
   def insufficient_funds?
     @balance < MINIMUM_BALANCE
