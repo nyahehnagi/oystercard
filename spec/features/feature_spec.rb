@@ -20,7 +20,7 @@ describe "User Story 7:" do
   it "should reduce the balance after touching out" do
     oyster_card = OysterCard.new(20)
     oyster_card.touch_in(Station.new("Holborn"))
-    oyster_card.touch_out
+    oyster_card.touch_out(Station.new("Liverpool Street"))
     expect(oyster_card.balance).to eq 19
   end
 end
@@ -30,20 +30,33 @@ end
 # I need to know where I've travelled from
 
 describe "User Story 8:" do
-  it "should store the entry station after touch in" do
+  it "stores the entry station after touch in" do
     oyster_card = OysterCard.new(1)
     entry_station = Station.new("Holborn")
     oyster_card.touch_in(entry_station)
     expect(oyster_card.entry_station.name).to eq entry_station.name
   end
 
-  it "should have nil entry station after touch out" do
+  it "has nil entry station after touch out" do
     oyster_card = OysterCard.new(1)
     entry_station = Station.new("Holborn")
     oyster_card.touch_in(entry_station)
-    oyster_card.touch_out
+    oyster_card.touch_out(Station.new("liverpool Street"))
     expect(oyster_card.entry_station).to be_nil
   end
+end
 
-  
+# In order to know where I have been
+# As a customer
+# I want to see all my previous trips
+describe "User Story 9" do
+  xit "stores a list of journeys" do
+    oyster_card = OysterCard.new(1)
+    entry_station = Station.new("Holborn")
+    exit_station = Station.new("Liverpool Street")
+    oyster_card.touch_in(entry_station)
+    oyster_card.touch_out(exit_station)
+    expect(oyster_card.journeys).to eq [{entry_station => exit_station}]
+  end
+
 end
