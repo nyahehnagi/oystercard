@@ -9,7 +9,7 @@ require_relative '../../lib/station'
 describe "User Story 6:" do
   it "should raise an error" do
     oyster_card = OysterCard.new
-    expect{oyster_card.touch_in(Station.new("Holborn"))}.to raise_error "Insufficient funds on card"
+    expect{oyster_card.touch_in(Station.new("Holborn",1))}.to raise_error "Insufficient funds on card"
   end
 end
 
@@ -19,8 +19,8 @@ end
 describe "User Story 7:" do
   it "should reduce the balance after touching out" do
     oyster_card = OysterCard.new(20)
-    oyster_card.touch_in(Station.new("Holborn"))
-    oyster_card.touch_out(Station.new("Liverpool Street"))
+    oyster_card.touch_in(Station.new("Holborn" , 1))
+    oyster_card.touch_out(Station.new("Liverpool Street", 1))
     expect(oyster_card.balance).to eq 19
   end
 end
@@ -32,16 +32,16 @@ end
 describe "User Story 8:" do
   it "stores the entry station after touch in" do
     oyster_card = OysterCard.new(1)
-    entry_station = Station.new("Holborn")
+    entry_station = Station.new("Holborn", 1)
     oyster_card.touch_in(entry_station)
     expect(oyster_card.entry_station.name).to eq entry_station.name
   end
 
   it "has nil entry station after touch out" do
     oyster_card = OysterCard.new(1)
-    entry_station = Station.new("Holborn")
+    entry_station = Station.new("Holborn" , 1)
     oyster_card.touch_in(entry_station)
-    oyster_card.touch_out(Station.new("liverpool Street"))
+    oyster_card.touch_out(Station.new("liverpool Street", 1))
     expect(oyster_card.entry_station).to be_nil
   end
 end
@@ -50,13 +50,30 @@ end
 # As a customer
 # I want to see all my previous trips
 describe "User Story 9" do
-  xit "stores a list of journeys" do
+  it "stores a list of journeys" do
     oyster_card = OysterCard.new(1)
-    entry_station = Station.new("Holborn")
-    exit_station = Station.new("Liverpool Street")
+    entry_station = Station.new("Holborn" , 1)
+    exit_station = Station.new("Liverpool Street", 1)
     oyster_card.touch_in(entry_station)
     oyster_card.touch_out(exit_station)
     expect(oyster_card.journeys).to eq [{entry_station => exit_station}]
   end
+
+end
+
+# In order to know how far I have travelled
+# As a customer
+# I want to know what zone a station is in
+describe "User Story 10 - Station Class" do
+  it "has a name" do
+    station = Station.new("Liverpool Street", 1)
+    expect(station.name).to eq "Liverpool Street"
+  end
+
+  it "has a zone" do
+    station = Station.new("Liverpool Street", 1)
+    expect(station.zone).to eq 1
+  end
+
 
 end
